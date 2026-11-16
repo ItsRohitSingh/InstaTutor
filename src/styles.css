@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --app-bg: #101412;
+    --app-panel: #151b18;
+    --app-line: rgba(190, 207, 196, 0.1);
+    --app-mint: #a4d8bd;
+    --app-lime: #d8e6a4;
+    --app-muted: #a1aaa4;
+  }
+  
+  body {
+    @apply text-slate-100 antialiased min-h-screen selection:bg-teal-500 selection:text-white;
+    background: var(--app-bg);
+    font-family: "Aptos", "Segoe UI", sans-serif;
+  }
+}
+
+.app-shell {
+  background-color: var(--app-bg);
+  background-image: linear-gradient(180deg, #141a17 0%, #101412 42%, #111614 100%);
+}
+
+.app-navbar {
+  border-color: var(--app-line);
+  background: rgba(16, 20, 18, 0.94);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.015);
+}
+
+.app-footer {
+  border-color: var(--app-line);
+  background: rgba(16, 20, 18, 0.54);
+}
+
+.landing-layout {
+  max-width: 1040px;
+  animation: page-arrive 420ms ease-out both;
+}
+
+.landing-intro {
+  padding: 0.75rem 0 0.5rem;
+}
+
+.landing-intro h1,
+.workspace-heading h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: 0;
+}
+
+.headline-accent {
+  color: var(--app-lime);
+}
+
+.connection-status {
+  padding-inline: 0.75rem;
+  padding-block: 0.45rem;
+  border-color: var(--app-line);
+  background: rgba(255, 255, 255, 0.025);
+  box-shadow: none;
+}
+
+.study-builder {
+  border-radius: 14px;
+  background: rgba(21, 27, 24, 0.88);
+  border-color: var(--app-line);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.study-builder:focus-within {
+  border-color: rgba(164, 216, 189, 0.24);
+  background: rgba(22, 29, 26, 0.94);
+}
+
+.study-input {
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.study-input:focus {
+  background: rgba(12, 17, 15, 0.96);
+}
+
+.topic-suggestion {
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.topic-suggestion:hover {
+  transform: translateY(-1px);
+  border-color: rgba(164, 216, 189, 0.3);
+}
+
+.topic-suggestion.selected-topic {
+  border-color: rgba(164, 216, 189, 0.38);
+  background: rgba(164, 216, 189, 0.1);
+  color: #c1e3cf;
+}
+
+.study-mode {
+  min-height: 104px;
+  border-radius: 10px;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.study-mode:hover {
+  transform: translateY(-1px);
+  border-color: rgba(164, 216, 189, 0.3);
+}
+
+.study-mode.selected-mode {
+  box-shadow: inset 0 0 0 1px rgba(216, 230, 164, 0.1);
+}
+
+.session-card {
+  border-radius: 10px;
+  border-color: var(--app-line);
+  background: rgba(21, 27, 24, 0.55);
+  box-shadow: none;
+}
+
+.session-card:hover {
+  transform: translateY(-2px);
+  background: rgba(25, 33, 29, 0.92);
+  border-color: rgba(164, 216, 189, 0.2);
+}
+
+.study-workspace {
+  animation: page-arrive 360ms ease-out both;
+}
+
+.workspace-heading h1 {
+  overflow-wrap: anywhere;
+}
+
+.module-tabs {
+  scrollbar-width: none;
+}
+
+.module-tab {
+  white-space: nowrap;
+  position: relative;
+  min-height: 46px;
+  border-radius: 7px 7px 0 0;
+}
+
+.module-tab.active-tab {
+  color: var(--app-mint);
+}
+
+.module-tab:hover {
+  background: rgba(164, 216, 189, 0.045);
+}
+
+.workspace-content {
+  animation: content-arrive 240ms ease-out both;
+}
+
+.chat-panel {
+  height: clamp(460px, calc(100dvh - 250px), 720px);
+  border-radius: 12px;
+  border-color: var(--app-line);
+  background: rgba(21, 27, 24, 0.76);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+}
+
+.chat-prompts {
+  background: rgba(12, 17, 15, 0.45);
+  border-color: var(--app-line);
+}
+
+@keyframes page-arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes content-arrive {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .landing-layout {
+    padding-top: 1.25rem;
+    padding-bottom: 2rem;
+  }
+
+  .landing-intro {
+    padding-top: 0.5rem;
+  }
+
+  .study-mode {
+    min-height: 96px;
+  }
+
+  .module-tabs {
+    margin-inline: -1rem;
+    padding-inline: 1rem;
+  }
+
+  .chat-panel {
+    height: max(460px, calc(100dvh - 225px));
+  }
+
+  .builder-actions {
+    justify-content: stretch;
+  }
+
+  .builder-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 3D Card Flip styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(30, 41, 59, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
