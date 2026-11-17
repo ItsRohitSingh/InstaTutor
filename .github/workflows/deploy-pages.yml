@@ -36,12 +36,12 @@ jobs:
         run: npm run build -- --base-href "/InstaTutor/"
 
       - name: Add .nojekyll
-        run: touch dist/instatutor/.nojekyll
+        run: touch dist/instatutor/browser/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/instatutor
+          path: dist/instatutor/browser
 
   deploy:
     needs: build
